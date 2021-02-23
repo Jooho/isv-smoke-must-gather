@@ -3,7 +3,7 @@
 # For Operator ISV
 OPERATOR_NAME="isv-must-gather-operator"
 
-CUSTOM_RESOURCE_LIST=("")       #Syntax ("NFSProvisioenr" "NFSTest")
+CUSTOM_RESOURCE_LIST=()       #Syntax ("NFSProvisioenr" "NFSTest")
 
 # Default values
 # Folder where tar ball will be stored

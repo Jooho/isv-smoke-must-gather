@@ -18,6 +18,8 @@ check-must-gather:
        
 build-must-gather:
 	@echo "Building the $(OPERATOR_NAME)-must-gather image"
+	cp $(shell pwd)/collection-scripts/gather_original $(shell pwd)/collection-scripts/gather
+	cp $(shell pwd)/collection-scripts/gather_namespaced_resources_original $(shell pwd)/collection-scripts/gather_namespaced_resources
 	podman build --format docker -t $(MUST_GATHER_FULL_IMAGE_NAME) -f $(shell pwd)/Dockerfile.rhel .
 
 push-must-gather:
