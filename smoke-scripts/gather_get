@@ -42,8 +42,9 @@ oc_gets+=("${CUSTOM_RESOURCE_LIST[@]}")
 # oc_yamls+=("")
 ###################################
 
+
 # share pod list 
-pod_list=$(oc get pod --no-headers -o name  -n "${INSTALL_NAMESPACE}"|grep -v must-gather)
+pod_list=$(oc get pod --no-headers -o name  -n "${INSTALL_NAMESPACE}"|grep -v 'must-gather\|isv-cli')
 
 # For k8s resources in a namespace
 echo "collecting dump of ${INSTALL_NAMESPACE}" | tee -a  "${BASE_COLLECTION_PATH}"/gather-debug.log
@@ -85,7 +86,7 @@ then
       OC_DESC_DIR="${NAMESPACE_SCOPE_DATA_PATH}/oc_desc"
       mkdir -p "${OC_DESC_DIR}"
 
-      target_resource_list=$(oc get "${oc_desc}" -n "${INSTALL_NAMESPACE}" --no-headers -o name|grep -v must-gather)
+      target_resource_list=$(oc get "${oc_desc}" -n "${INSTALL_NAMESPACE}" --no-headers -o name|grep -v 'must-gather\|isv-cli')
 
       for item in ${target_resource_list} 
       do 
@@ -109,7 +110,7 @@ then
       YAML_DIR="${NAMESPACE_SCOPE_DATA_PATH}/yaml/${oc_yaml}"
       mkdir -p "${YAML_DIR}"
       
-      target_resource_list=$(oc get "${oc_yaml}" -n "${INSTALL_NAMESPACE}" --no-headers -o name|grep -v must-gather)
+      target_resource_list=$(oc get "${oc_yaml}" -n "${INSTALL_NAMESPACE}" --no-headers -o name|grep -v 'must-gather\|isv-cli')
 
       for item in ${target_resource_list} 
       do 
