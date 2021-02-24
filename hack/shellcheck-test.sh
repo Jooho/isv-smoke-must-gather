@@ -9,7 +9,7 @@ test_syntax() {
 }
 test_shellcheck() {
         if [[ "${SHELLCHECK}" ]]; then
-               "${SHELLCHECK}" -x -e SC2086,SC2034 "${1}"
+               "${SHELLCHECK}" -x -e SC2086,SC2034,SC2154 "${1}"
         else
                 return 0
         fi
